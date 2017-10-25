@@ -5,8 +5,12 @@ import Navbar from './components/navbar';
 
 const App = () => (
  <div>
- <Navbar />
- <Main />
+ 	<Navbar />
+  <div className="container">
+ 	<Main />
+  </div>
  </div>
+
   );
+
 export default App;
