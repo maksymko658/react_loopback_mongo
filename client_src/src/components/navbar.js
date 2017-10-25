@@ -15,9 +15,8 @@ class Navbar extends Component {
 			        <li><Link to="/"><i className="fa fa-users"></i>Meetups</Link></li>
 			      </ul>
 			      <ul className="side-nav" id="main-menu">
-			        <li><a href="sass.html">Sass</a></li>
-			        <li><a href="badges.html">Components</a></li>
-			        <li><a href="collapsible.html">JavaScript</a></li>
+					<li><Link to="/"><i className="fa fa-users"></i>Meetups</Link></li>
+					<li><Link to="/meetups/add"><i className="fa fa-plus"></i>Add Meetup</Link></li>
 			      </ul>
 			    </div>
   			</nav>
