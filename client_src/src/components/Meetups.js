@@ -9,7 +9,7 @@ class Meetups extends Component {
 		}
 	}
 	componentWillMount(){
-		
+		this.getMeetups();
 	}
 
 	getMeetups(){
