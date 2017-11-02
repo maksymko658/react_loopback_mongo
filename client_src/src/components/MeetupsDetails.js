@@ -12,6 +12,7 @@ class MeetupsDetails extends Component {
   componentWillMount(){
     this.getMeetup();
   }
+
 getMeetup(){
   let meetupId = this.props.match.params.id;
       axios.get(`http://localhost:3000/api/meetups/${meetupId}`)
@@ -23,6 +24,7 @@ getMeetup(){
     })
     .catch(err => console.log(err));
 }
+
 onDelete(){
   let meetupId = this.state.details.id;
   axios.delete(`http://localhost:3000/api/meetups/${meetupId}`)
