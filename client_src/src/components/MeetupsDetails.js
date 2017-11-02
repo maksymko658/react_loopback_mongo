@@ -32,8 +32,10 @@ getMeetup(){
           <h1>{this.state.details.name}</h1>
           <ul className="collection">
             <li className="collection-item">City: {this.state.details.city}</li>
-            <li className="collection-item">City: {this.state.details.adress}</li>
+            <li className="collection-item">Address: {this.state.details.adress}</li>
             </ul>
+            <Link className="btn" to={`/meetups/edit/${this.state.details.id}`}>Edit</Link>
+            <button className="btn red right">Delete</button>
           </div>
         );
     }
