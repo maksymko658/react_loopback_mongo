@@ -11,10 +11,13 @@ class EditMeetup extends Component {
       city:'',
       adress:''
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
   componentWillMount(){
     this.getMeetupDetails();
   }
+
   getMeetupDetails(){
   let meetupId = this.props.match.params.id;
       axios.get(`http://localhost:3000/api/meetups/${meetupId}`)
@@ -31,6 +34,17 @@ class EditMeetup extends Component {
     .catch(err => console.log(err));
 }
 
+  editMeetup(newMeetup){
+        // console.log(newMeetup);
+    axios.request({
+      method:'put',
+      url:`http://localhost:3000/api/meetups/${this.state.id}`,
+      data: newMeetup
+    }).then(response => {
+      this.props.history.push('/');
+    }).catch(err => console.log(err));
+  }
+
     onSubmit(e){
     const newMeetup = {
       name: this.refs.name.value,
@@ -41,6 +55,16 @@ class EditMeetup extends Component {
     e.preventDefault();
   }
 
+  handleInputChange(e){
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    })
+  }
+
     render() {
         return (
           <div>
@@ -49,17 +73,26 @@ class EditMeetup extends Component {
             <h1>Edit</h1>
                <form onSubmit={this.onSubmit.bind(this)}>
               <div className="input-field">
-              <input type="text" name="name" ref="name" />
+              <input type="text" name="name" ref="name" 
+              value={this.state.name} 
+              onChange={this.handleInputChange} />
+
               <label htmlFor="name">Name</label>
               </div>
 
                  <div className="input-field">
-              <input type="text" name="city" ref="city" />
+              <input type="text" name="city" ref="city" 
+              value={this.state.city} 
+              onChange={this.handleInputChange} />
+
               <label htmlFor="city">City</label>
               </div>
 
                    <div className="input-field">
-              <input type="text" name="adress" ref="adress" />
+              <input type="text" name="adress" ref="adress" 
+              value={this.state.adress}
+              onChange={this.handleInputChange} />
+
               <label htmlFor="adress">Address</label>
               </div>
                 <input type="submit" value="Save" className="btn" />
