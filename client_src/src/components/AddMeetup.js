@@ -4,7 +4,14 @@ import {Link} from 'react-router-dom';
 
 class AddMeetup extends Component {
   AddMeetup(newMeetup){
-    console.log(newMeetup);
+    // console.log(newMeetup);
+    axios.request({
+      method:'post',
+      url:'http://localhost:3000/api/meetups',
+      data: newMeetup
+    }).then(response => {
+      this.props.history.push('/');
+    }).catch(err => console.log(err));
   }
 
   onSubmit(e){
