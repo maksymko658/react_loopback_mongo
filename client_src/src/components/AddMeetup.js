@@ -3,9 +3,18 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class AddMeetup extends Component {
+  AddMeetup(newMeetup){
+    console.log(newMeetup);
+  }
 
-  onSubmit(){
-    return 1;
+  onSubmit(e){
+    const newMeetup = {
+      name: this.refs.name.value,
+      city: this.refs.city.value,
+      adress: this.refs.adress.value,
+    }
+    this.AddMeetup(newMeetup)
+    e.preventDefault();
   }
 
     render() {
@@ -27,8 +36,9 @@ class AddMeetup extends Component {
 
                    <div className="input-field">
               <input type="text" name="adress" ref="adress" />
-              <label htmlFor="address">Address</label>
+              <label htmlFor="adress">Address</label>
               </div>
+                <input type="submit" value="Save" className="btn" />
               </form>
           </div>
         );
